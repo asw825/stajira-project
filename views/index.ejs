@@ -7,29 +7,44 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h1>Form 데이터 입력</h1>
+    <div>
+        <p style="color: red;"><b> 명령어를 터미널에 복사하고 붙여넣어주세요.</b></p>
+        <p style="color: red;"><b> 이부분을 먼저 진행하지않으면 지라티켓 생성기가 동작하지않아요!! </b></p>
+        <p id="text" style="display: inline;">
+            open -a "Google Chrome" --args --remote-debugging-port=9222 --user-data-dir="/Users/$(whoami)/Library/Application Support/Google/Chrome"
+        </p>
+        <button style="display: inline;" onclick="copyToClipboard()">복사</button>
+    </div>
+
+    <h1 style="color: #48D1CC;">JIRA-TICKET 데이터 입력</h1>
     <form action="/submit" method="POST">
         <div>
-            <label for="jiraticketurl">jiraticketurl(티켓 url 주소를 넣어주세요):</label>
-            <input type="text" id="jiraticketurl" name="jiraticketurl" required>
+            <label for="jiraticketurl"><b>Jiraticket_Url(티켓 url 주소를 넣어주세요):</b></label>
+            <input placeholder="https://cloud.jira.woowa.in/browse/WOOWAQA-123456" id="jiraticketurl" name="jiraticketurl" required>
         </div>
   
         <div>
-            <label for="summary">Summary(요약):</label>
-            <input type="text" id="summary" name="summary" required>         
+            <label for="summary"><b>Summary(요약):</b></label>
+            <input placeholder="[베타/커넥트앱] 토스트바 클릭시 에러 문구 노출되는현상" id="summary" name="summary" required>         
         </div>
         <div>
-            <label for="description">Description(설명):</label>
+            <label for="description"><b>Description(설명):</b></label>
             <textarea type="text" id="description" name="description" required>
                    <%= formData %>
             </textarea>
         </div>
-        <button id="ticketSubmitButton" type="submit">제출</button>
+        <button type="submit">실행하기</button>
     </form>
     <script>
-        let submitButton = document.querySelector("#ticketSubmitButton").addEventListener('click', () => 
-        location.reload()
-        ); 
+        function copyToClipboard() {
+            const text = document.getElementById("text").innerText; // 텍스트 가져오기
+            navigator.clipboard.writeText(text).then(() => {
+                alert("✅ 복사되었습니다!");
+            }).catch(err => {
+                console.error("❌ 복사 실패:", err);
+            });
+        }
+  
     </script>
 
 </body>

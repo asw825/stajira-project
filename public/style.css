@@ -5,6 +5,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-color: #f5ebe0;
 }
 
 form {
@@ -26,17 +27,26 @@ input {
     text-align: left;
     width: 735px;
     height: 30px;
+    border: none;
 }
-
+input:focus,textarea:focus  {
+    border: 1px solid #48D1CC;
+    outline: none;
+}
 textarea {
     text-align: left;
     width: 900px;
     height: 500px;
+    border: none;
 }
+
 
 form > button {
     width: 200px;
     height: 80px;
     border-radius: 10px;
     cursor: pointer;
+    color: white;
+    background-color: #48D1CC;
+    border: 1px solid white;
 }

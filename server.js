@@ -25,9 +25,9 @@ app.get("/", (req, res) => {
 [재현스텝]
 누가 보더라도 재현할 수 있는 스텝으로 작성
 [예상결과]
-{color:blue}(파란색글씨){/color}
+(파란색글씨)
 [실제결과]
-{color:red}(빨간색글씨){/color}
+(빨간색글씨)
 [참고]
 테스트 베이시스(기획서, API문서), 슬랙링크 등
 재현빈도
@@ -51,4 +51,4 @@ app.post("/submit", async (req, res) => {
 });
 
 // 서버 실행
-app.listen(5001, () => console.log("✅ 서버 실행 중: http://localhost:5000"));
+app.listen(5001, () => console.log("✅ 서버 실행 중: http://localhost:5001"));
