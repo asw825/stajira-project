@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form 입력</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Form 데이터 입력</h1>
+    <form action="/submit" method="POST">
+        <div>
+            <label for="jiraticketurl">jiraticketurl(티켓 url 주소를 넣어주세요):</label>
+            <input type="text" id="jiraticketurl" name="jiraticketurl" required>
+        </div>
+  
+        <div>
+            <label for="summary">Summary(요약):</label>
+            <input type="text" id="summary" name="summary" required>         
+        </div>
+        <div>
+            <label for="description">Description(설명):</label>
+            <textarea type="text" id="description" name="description" required>
+                   <%= formData %>
+            </textarea>
+        </div>
+        <button id="ticketSubmitButton" type="submit">제출</button>
+    </form>
+    <script>
+        let submitButton = document.querySelector("#ticketSubmitButton").addEventListener('click', () => 
+        location.reload()
+        ); 
+    </script>
+
+</body>
+</html>
