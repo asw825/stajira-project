@@ -9,8 +9,12 @@ async function runSelenium(formData) {
     let options = new chrome.Options();
 
      // 기존 로그인된 Chrome 창과 연결 (디버깅 포트 사용)
-
+    options.addArguments("--headless"); // ✅ Headless 모드 활성화
+    options.addArguments("--no-sandbox");
+    options.addArguments("--disable-dev-shm-usage");
+    options.addArguments("--disable-gpu");
     options.options_['debuggerAddress'] = '127.0.0.1:9222';
+    
 
     let driver = await new Builder()
         .forBrowser("chrome")
