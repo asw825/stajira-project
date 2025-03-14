@@ -2,7 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const { runSelenium } = require("./scraper");
 const PORT = process.env.PORT || 5001;
-
 const app = express();
 
 // EJS 설정
@@ -48,6 +47,10 @@ app.post("/submit", async (req, res) => {
     } catch (error) {
         console.log(error)
     }
+    process.on("SIGTERM", () => {
+        console.log("🚨 프로세스 종료 감지됨. 서버 종료 중...");
+        process.exit(0);
+    });
 });
 
 // 서버 실행
