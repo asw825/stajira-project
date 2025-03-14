@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const { runSelenium } = require("./scraper");
+const PORT = process.env.PORT || 5001;
 
 const app = express();
 
@@ -45,10 +46,9 @@ app.post("/submit", async (req, res) => {
     try {
        await runSelenium(formData); // Selenium 실행
     } catch (error) {
-        res.status(500).send("Selenium 실행 중 오류 발생");
         console.log(error)
     }
 });
 
 // 서버 실행
-app.listen(5001, () => console.log("✅ 서버 실행 중: http://localhost:5001"));
+app.listen(PORT, () => console.log(`✅ 서버 실행 중: http://localhost:${PORT}`));
