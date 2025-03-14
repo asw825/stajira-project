@@ -14,6 +14,8 @@ async function runSelenium(formData) {
     options.addArguments("--disable-dev-shm-usage");
     options.addArguments("--disable-gpu");
     options.addArguments("--remote-debugging-port=9222"); // ✅ 디버깅 포트 지정 (중요!)
+    options.debuggerAddress = "127.0.0.1:9222";
+
     
 
     let driver = await new Builder()
